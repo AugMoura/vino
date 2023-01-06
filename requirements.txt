@@ -8,4 +8,4 @@ pylint
 seaborn
 scikit-learn
 string
-nltk
+nltk==3.7
