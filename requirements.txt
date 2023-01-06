@@ -1,0 +1,11 @@
+ipdb
+ipykernel
+matplotlib
+numpy
+pandas
+pytest
+pylint
+seaborn
+scikit-learn
+string
+nltk
