@@ -9,13 +9,13 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# markdown
+# little title
 st.markdown('Streamlit Vin Demo 1.1.1')
 
-# 设置网页标题
+# Main Title
 st.title('Vino - Wine Finder')
 
-# 展示一级标题
+# Subtitle
 st.header('What wine do you like?')
 
 #txt = st.text_area('Describe the wine you like, as if discusing to a friend! Example: "I like sweet sparkling wines, specialy when paired with fruity deserts"', '''
@@ -29,6 +29,7 @@ st.header('What wine do you like?')
 #df.index = df_clean_description.index
 #df = pd.concat([df, df_clean_description], axis=1)
 
+#Data processing, text cleaning:
 def clean_text(text):
     '''
     Preprocesses text
@@ -58,12 +59,14 @@ def clean_text(text):
     return text
 #df["clean_description"] = df["clean_description"].apply(clean_text)
 
+#TEXT INPUT FOR USERS + Search Result Banner
 user_input = st.text_input('user input', "type here what you like")
 answer = user_input+"_answer"
 st.write('you searched', answer)
 
 #Work on the output area, the input will be 'user_input'
 
+#SEARCH RESULTS (using metrics in streamlit)
 col1, col2, col3 = st.columns(3)
 col1.metric("Wine Name", "Lacoste", "France")
 col2.metric("Matching %", "90%", "very confident")
