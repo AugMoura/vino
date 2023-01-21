@@ -11,23 +11,34 @@ st.title('Vino - Wine Finder')
 st.header('What wine do you like?')
 
 # Filter-based recommender
+col1, col2, col3 = st.columns(3)
+
 # Flavor filter
-flavor = st.selectbox(
-    'What is your favorite flavor?',
-    ('Apple', 'Pineapple', 'Blackberry'))
 
-st.write('You selected:', flavor)
+with col1:
 
-# Moment filter
-moment = st.selectbox(
-    'At which moment do you drink the wine?',
-    ('Tranquil night', 'Relaxng Weekend', 'Sunny holiday'))
-
-st.write('You selected:', moment)
+    flavor = pd.DataFrame({'labels':['Apple','Pineapple','Cherry']})
+    flavorSelect = st.multiselect(
+    'What are your favorite wine flavors',
+      options=list(flavor['labels']), # convert to list
+      default=['Cherry'])
 
 # Color filter
-color = st.selectbox(
-    'Which wine color do you like the best?',
-    ('Ruby','Purple','Garnet','Salmon','Amber','Gold','Yellow'))
 
-st.write('You selected:', color)
+with col2:
+
+    color = pd.DataFrame({'labels':['Ruby','Purple','Garnet','Salmon','Amber','Gold','Yellow']})
+    colorSelect = st.multiselect(
+    'What are your favorite wine colors',
+      options=list(color['labels']), # convert to list
+      default=['Ruby'])
+
+# Origin filter
+
+with col3:
+
+    origin = pd.DataFrame({'labels':['France','Italy','Spain','Australia','United States','New Zeland']})
+    originSelect = st.multiselect(
+    'What are your favorite wine origins',
+      options=list(origin['labels']), # convert to list
+      default=['France'])
