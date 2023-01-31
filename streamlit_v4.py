@@ -48,29 +48,28 @@ with col3:
 
 #TEXT INPUT FOR USERS + Search Result Banner
 user_input = st.text_input('Can you describe even better the wine you want?', "Type it here")
-answer = user_input
-st.write('You searched:', answer)
+st.write('You searched:', user_input)
 
 #Work on the output area, the input will be 'user_input'
 df = import_df()
-prediction, similarity = pred(df, answer)
+prediction, similarity = pred(user_input)
 
 #SEARCH RESULTS (using metrics in streamlit)
-if type(prediction) == pd.DataFrame:
+if type(prediction) == list:
     col1, col2, col3 = st.columns(3)
-    col1.metric("Wine Name", str(prediction["title"].iloc[0]), "From "+str(prediction["country"].iloc[0]))
+    col1.metric("Wine Name", str(df["title"].iloc[prediction[0]]), "From "+str(df["country"].iloc[prediction[0]]))
     col2.metric("Similarity %", round((similarity[0]*100), 2), "very confident")
-    col3.metric("Wine Description", str(prediction["variety"].iloc[0]), str(prediction["description"].iloc[0]))
+    col3.metric("Wine Description", str(df["variety"].iloc[prediction[0]]), str(df["description"].iloc[prediction[0]]))
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Wine Name", str(prediction["title"].iloc[1]), "From "+str(prediction["country"].iloc[1]))
+    col1.metric("Wine Name", str(df["title"].iloc[prediction[1]]), "From "+str(df["country"].iloc[prediction[1]]))
     col2.metric("Similarity %", round((similarity[1]*100), 2), "very confident")
-    col3.metric("Wine Description", str(prediction["variety"].iloc[1]), str(prediction["description"].iloc[1]))
+    col3.metric("Wine Description", str(df["variety"].iloc[prediction[1]]), str(df["description"].iloc[prediction[1]]))
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Wine Name", str(prediction["title"].iloc[2]), "From "+str(prediction["country"].iloc[2]))
+    col1.metric("Wine Name", str(df["title"].iloc[prediction[2]]), "From "+str(df["country"].iloc[prediction[2]]))
     col2.metric("Similarity %", round((similarity[2]*100), 2), "very confident")
-    col3.metric("Wine Description", str(prediction["variety"].iloc[2]), str(prediction["description"].iloc[2]))
+    col3.metric("Wine Description", str(df["variety"].iloc[prediction[2]]), str(df["description"].iloc[prediction[2]]))
 
 else:
     col1, col2, col3 = st.columns(3)

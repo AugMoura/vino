@@ -4,14 +4,14 @@ from nltk.tokenize import word_tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from vino_scripts.ml_logic.preprocessor import clean_text
 
-answer = ""
+#answer = ""
 
 def import_df():
     df = pd.read_csv("../vino/datasets/clean_dataset.csv")
 
     return df
 
-def pred(df: pd.DataFrame, answer):
+def pred(answer: str):
     model_imported = pickle.load(open('../vino/notebooks/model_v1.pkl','rb'))
     clean_answer = word_tokenize(clean_text(answer))
     #answer_doc2vec_v1 = str(input("Describe the type of wine you're looking for (the more details, the better): "))
@@ -25,6 +25,6 @@ def pred(df: pd.DataFrame, answer):
         idx.append(row[0])
         idx_sim.append(row[1])
 
-    return df[["title", "country", "description", "price", "variety"]].iloc[idx], idx_sim
+    return idx, idx_sim
 
 #print(pred(df))
