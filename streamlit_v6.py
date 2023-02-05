@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
-from vino_scripts.interface.main import import_df, pred, filter_flavor, filter_color, filter_region, filter_one, filter_color_region, filter_flavor_region, filter_flavor_color, filter_flavor_color_region, filter_three_color_region
+from vino_scripts.interface.main import import_df, pred, filter_one, filter_color_region, filter_flavor_region, filter_flavor_color, filter_flavor_color_region, filter_three_color_region
 
 # little title
-st.markdown('Streamlit Vino Demo 4.1.1')
+st.markdown('Streamlit Vino Demo 6.1.1')
 
 # Main Title
 st.title('Vino - Wine Finder')
@@ -23,7 +23,7 @@ with col1:
 
     flavor = pd.DataFrame({'labels':['Fruity', 'Earthy', 'Floral', 'Sweet', 'Herbal', 'Meaty', 'Coffee', 'Mineral', 'Oaky', 'Spicy']})
     flavorSelect = st.multiselect(
-    'What are your favorite wine flavors?',
+    'Preference for flavor? (Select 1)',
       options=list(flavor['labels']), # convert to list
       default=['Fruity'])
 
@@ -33,7 +33,7 @@ with col2:
 
     color = pd.DataFrame({'labels':['Red', 'White', 'Ruby', 'White', 'Rosé', 'Gold']})
     colorSelect = st.multiselect(
-    'Preference for a wine color?',
+    'Preference for color? (Select 1)',
       options=list(color['labels']), # convert to list
       default=['Red'])
 
@@ -41,14 +41,14 @@ with col2:
 
 with col3:
 
-    origin = pd.DataFrame({'labels':['Western Europe', 'Eastern Europe', 'America', 'Oceania', 'Rest of World']})
-    originSelect = st.multiselect(
-    'Preference for a wine texture?',
-      options=list(origin['labels']), # convert to list
+    region = pd.DataFrame({'labels':['Western Europe', 'Eastern Europe', 'America', 'Oceania', 'Rest of World']})
+    regionSelect = st.multiselect(
+    'Preference for region? (Select 1)',
+      options=list(region['labels']), # convert to list
       default=['Western Europe'])
 
 #TEXT INPUT FOR USERS + Search Result Banner
-user_input = st.text_input('Can you describe even better the wine you want?', "Type it here")
+user_input = st.text_input('Not enough? Let us know more about the wine you are looking for:', "Type it here")
 st.write('You searched:', user_input)
 
 #Work on the output area, the input will be 'user_input'

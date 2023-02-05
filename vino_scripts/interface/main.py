@@ -6,7 +6,6 @@ from vino_scripts.ml_logic.preprocessor import clean_text
 import functools as ft
 import pandas as pd
 
-#answer = ""
 
 def import_df():
     """
@@ -23,8 +22,6 @@ def pred(answer: str):
     """
     model_imported = pickle.load(open('../vino/notebooks/model_v1.pkl','rb'))
     clean_answer = word_tokenize(clean_text(answer))
-    #answer_doc2vec_v1 = str(input("Describe the type of wine you're looking for (the more details, the better): "))
-    #clean_answer = word_tokenize(clean_text(answer_doc2vec_v1))
     test_doc_vector_v1 = model_imported.infer_vector(clean_answer)
 
     idx = []
@@ -109,17 +106,10 @@ def filter_region(df, *args):
     return df_final.drop_duplicates().reset_index(drop=True)
 
 
-
-
-
-
-
 def filter_one(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -129,7 +119,6 @@ def filter_one(df, *args):
                                'designation',
                                'province',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
@@ -138,11 +127,9 @@ def filter_one(df, *args):
 
 
 def filter_color_region(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -157,7 +144,6 @@ def filter_color_region(df, *args):
                                'Oceania',
                                'Rest of World',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
@@ -165,11 +151,9 @@ def filter_color_region(df, *args):
 
 
 def filter_flavor_region(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -184,7 +168,6 @@ def filter_flavor_region(df, *args):
                                'Oceania',
                                'Rest of World',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
@@ -192,11 +175,9 @@ def filter_flavor_region(df, *args):
 
 
 def filter_flavor_color(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -211,7 +192,6 @@ def filter_flavor_color(df, *args):
                                'Gold',
                                'Rosé',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
@@ -219,11 +199,9 @@ def filter_flavor_color(df, *args):
 
 
 def filter_flavor_color_region(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -243,7 +221,6 @@ def filter_flavor_color_region(df, *args):
                                'Oceania',
                                'Rest of World',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
@@ -251,11 +228,9 @@ def filter_flavor_color_region(df, *args):
 
 
 def filter_three_color_region(df, *args):
-    #print(args[0])
 
     dfs = []
     for col in args[0]:
-        # print('='*50, col, '='*50)
         df_subset = df[df[col] != "0"].reset_index(drop=True)
         df_subset = df_subset[['title',
                                'description',
@@ -270,7 +245,6 @@ def filter_three_color_region(df, *args):
                                'Oceania',
                                'Rest of World',
                                col]]
-        # print(df_subset)
         dfs.append(df_subset)
 
     df_final = ft.reduce(lambda left, right: pd.merge(left, right, how = "outer"), dfs)
