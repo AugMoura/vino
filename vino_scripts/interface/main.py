@@ -1,11 +1,22 @@
 import pickle
 import pandas as pd
-from vino_scripts.ml_logic import nltkmodules
+#from vino_scripts.ml_logic import nltkmodules
 from nltk.tokenize import word_tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from vino_scripts.ml_logic.preprocessor import clean_text
 import functools as ft
 import pandas as pd
+
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')
 
 
 def import_df():
