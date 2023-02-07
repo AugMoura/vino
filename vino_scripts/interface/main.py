@@ -1,6 +1,6 @@
 import pickle
 import pandas as pd
-from vino_scripts.ml_logic.preprocessor import nltkmodules
+from vino_scripts.ml_logic import nltkmodules
 from nltk.tokenize import word_tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from vino_scripts.ml_logic.preprocessor import clean_text
