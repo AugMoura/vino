@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from vino_scripts.interface.main import import_df, pred, filter_one, filter_color_region, filter_flavor_region, filter_flavor_color, filter_flavor_color_region, filter_three_color_region
+from main import import_df, pred, filter_one, filter_color_region, filter_flavor_region, filter_flavor_color, filter_flavor_color_region, filter_three_color_region
 
 # little title
 st.markdown('Streamlit Vino Demo 6.1.1')

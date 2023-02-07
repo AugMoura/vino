@@ -1,9 +1,10 @@
 import pickle
 import pandas as pd
-from vino_scripts.ml_logic import nltkmodules
+import nltkmodules
+import nltk
 #from nltk.tokenize import word_tokenize
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-from vino_scripts.ml_logic.preprocessor import clean_text
+from preprocessor import clean_text
 import functools as ft
 import pandas as pd
 
@@ -22,7 +23,7 @@ def pred(answer: str):
     Runs predictive model based on the entire dataset
     """
     model_imported = pickle.load(open('../vino/notebooks/model_v1.pkl','rb'))
-    clean_answer = nltkmodules.tokenize.word_tokenize(clean_text(answer))
+    clean_answer = nltk.tokenize.word_tokenize(clean_text(answer))
     test_doc_vector_v1 = model_imported.infer_vector(clean_answer)
 
     idx = []

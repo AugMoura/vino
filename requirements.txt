@@ -9,4 +9,8 @@ seaborn
 scikit-learn
 gensim==4.2.0
 streamlit==1.11.1
+click
+joblib
+regex
+tqdm
 nltk==3.8.1

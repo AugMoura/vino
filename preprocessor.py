@@ -1,5 +1,5 @@
 import string
-#import nltk
+import nltk
 import nltkmodules
 #from nltk.tokenize import word_tokenize
 #from nltk.corpus import stopwords
@@ -21,14 +21,14 @@ def clean_text(text):
 
     text = "".join(char for char in text if not char.isdigit())
 
-    english_sw = nltkmodules.corpus.stopwords.words("english")
+    english_sw = nltk.corpus.stopwords.words("english")
     english_sw.append('wine')
-    tokenized = nltkmodules.tokenize.word_tokenize(text)
+    tokenized = nltk.tokenize.word_tokenize(text)
 
     text = " ".join(word for word in tokenized if word not in english_sw)
 
-    lemmatizer = nltkmodules.stem.WordNetLemmatizer()
-    tokenized = nltkmodules.tokenize.word_tokenize(text)
+    lemmatizer = nltk.stem.WordNetLemmatizer()
+    tokenized = nltk.tokenize.word_tokenize(text)
     lemma_verb = [lemmatizer.lemmatize(word, pos="v") for word in tokenized]
     lemma_noun = [lemmatizer.lemmatize(word, pos="n") for word in lemma_verb]
 
