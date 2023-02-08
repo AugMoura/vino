@@ -29,7 +29,7 @@ def pred(answer: str):
     idx = []
     idx_sim = []
 
-    for i, row in enumerate(model_imported.dv.most_similar(positive = [test_doc_vector_v1], topn=10000)):
+    for i, row in enumerate(model_imported.dv.most_similar(positive = [test_doc_vector_v1], topn=100000)):
         idx.append(row[0])
         idx_sim.append(row[1])
 
