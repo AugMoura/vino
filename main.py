@@ -13,7 +13,7 @@ def import_df():
     """
     Imports the dataset
     """
-    df = pd.read_csv("../vino/datasets/clean_dataset_v3.csv")
+    df = pd.read_csv("../vino/datasets/clean_dataset_v4.csv")
 
     return df
 
