@@ -13,7 +13,7 @@ def import_df():
     """
     Imports the dataset
     """
-    df = pd.read_csv("../vino/datasets/clean_dataset_v3.csv")
+    df = pd.read_csv("../vino/datasets/clean_dataset_v5.csv")
 
     return df
 
@@ -22,7 +22,7 @@ def pred(answer: str):
     """
     Runs predictive model based on the entire dataset
     """
-    model_imported = pickle.load(open('../vino/notebooks/model_v1.pkl','rb'))
+    model_imported = pickle.load(open('../vino/notebooks/model_v2.pkl','rb'))
     clean_answer = nltk.tokenize.word_tokenize(clean_text(answer))
     test_doc_vector_v1 = model_imported.infer_vector(clean_answer)
 
