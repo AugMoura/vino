@@ -8,7 +8,7 @@ pylint
 seaborn
 scikit-learn
 gensim==4.2.0
-streamlit==1.11.1
+streamlit
 click
 joblib
 regex
