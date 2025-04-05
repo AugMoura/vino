@@ -3,7 +3,7 @@ import pandas as pd
 import nltkmodules
 import nltk
 #from nltk.tokenize import word_tokenize
-from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+#from gensim.models.doc2vec import Doc2Vec, TaggedDocument
 from preprocessor import clean_text
 import functools as ft
 import pandas as pd
